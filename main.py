@@ -32,18 +32,18 @@ for page in range(1,pages_number+1):
 
     # Web-Scraping
     for line in soup.find_all('li', attrs={"data-cy": "rp-property-cd"}):
-        extraction.getId(line, ids)
-        extraction.getUrl(line, url)
-        extraction.getPropertyType(line, propertyType)
-        extraction.getAddress(line, address)
-        extraction.getNeighbor(line, neighbor)
-        extraction.getArea(line, area)
-        extraction.getRoom(line, room)
-        extraction.getBath(line, bath)
-        extraction.getPark(line, park)
-        extraction.getPrice(line, price)
-        extraction.getCondo(line, condo)
-        extraction.getIptu(line, iptu)
+        ids.append(extraction.getId(line))
+        url.append(extraction.getUrl(line))
+        propertyType.append(extraction.getPropertyType(line))
+        address.append(extraction.getAddress(line))
+        neighbor.append(extraction.getNeighbor(line))
+        area.append(extraction.getArea(line))
+        room.append(extraction.getRoom(line))
+        bath.append(extraction.getBath(line))
+        park.append(extraction.getPark(line))
+        price.append(extraction.getPrice(line))
+        condo.append(extraction.getCondo(line))
+        iptu.append(extraction.getIptu(line))
 
     driver.execute_script("arguments[0].click();", nextPageButton)
             

@@ -12,7 +12,6 @@ def buildDriver(userDataDir):
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument('--headless')  # Run in headless mode
     options.add_argument('--disable-gpu')  # Required for headless mode
-    options.add_argument('--disable-browser-side-navigation')
 
     # Set a temporary unique user data dir (optional but helps avoid conflicts)
     options.add_argument(f'--user-data-dir={userDataDir}')
