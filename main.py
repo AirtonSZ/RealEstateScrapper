@@ -1,6 +1,5 @@
-import time, os, random
+import time, random
 import tempfile
-import shutil
 import extraction
 import handleFile
 import navegation
@@ -49,7 +48,7 @@ for page in range(1,pages_number+1):
     driver.execute_script("arguments[0].click();", nextPageButton)
             
 # Close msedgedriver
-navegation.closeDriver(userDataDir)
+navegation.closeDriver(driver, userDataDir)
 
 # Create Output csv 
 handleFile.createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath, park, price, condo, iptu)

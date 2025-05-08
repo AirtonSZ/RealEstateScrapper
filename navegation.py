@@ -1,4 +1,4 @@
-import time, random
+import time, random, shutil
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
@@ -21,7 +21,7 @@ def buildDriver(userDataDir):
     return driver
 
 
-def closeDriver(userDataDir):
+def closeDriver(driver, userDataDir):
     driver.quit()
     shutil.rmtree(userDataDir)
 
