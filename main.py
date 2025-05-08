@@ -19,7 +19,7 @@ condo = []
 iptu = []
 
 # Get the number of pages to extract information
-pages_number = 1
+pages_number = 5
 tic = time.time()
 
 # Initialize driver
