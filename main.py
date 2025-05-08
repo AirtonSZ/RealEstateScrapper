@@ -31,6 +31,7 @@ def scroll_until_element_appears(driver,timeout=30):
             element = driver.find_element(By.CSS_SELECTOR, 'button[data-testid="next-page"]')
             driver.execute_script("arguments[0].scrollIntoView();", element)
             time.sleep(random.uniform(8, 10))
+            driver.execute_script("arguments[0].scrollIntoView();", element)
             return element
         except NoSuchElementException:
             scroll_offset = int(random.uniform(500, 1000))
