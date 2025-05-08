@@ -30,8 +30,7 @@ def scroll_until_element_appears(driver,timeout=30):
         try:
             element = driver.find_element(By.CSS_SELECTOR, 'button[data-testid="next-page"]')
             driver.execute_script("arguments[0].scrollIntoView();", element)
-            time.sleep(random.uniform(8, 10))
-            driver.execute_script("arguments[0].scrollIntoView();", element)
+            time.sleep(random.uniform(15, 20))
             return element
         except NoSuchElementException:
             scroll_offset = int(random.uniform(500, 1000))
@@ -117,8 +116,6 @@ options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) Apple
 options.add_argument("--disable-blink-features=AutomationControlled")
 options.add_argument('--headless')  # Run in headless mode
 options.add_argument('--disable-gpu')  # Required for headless mode
-# options.add_argument('--no-sandbox')
-# options.add_argument('--disable-dev-shm-usage')
 
 # Set a temporary unique user data dir (optional but helps avoid conflicts)
 user_data_dir = tempfile.mkdtemp()
