@@ -41,7 +41,6 @@ for page in range(1,pages_number+1):
     nextPageButton = navegation.scrollUntilElementAppears(driver)
     soup = navegation.getAndDownloadPage(driver, page)
 
-    lastLine = ''
     # Web-Scraping
     for line in soup.find_all('li', attrs={"data-cy": "rp-property-cd"}):
         ids.append(extraction.getId(line))
@@ -56,22 +55,6 @@ for page in range(1,pages_number+1):
         price.append(extraction.getPrice(line))
         condo.append(extraction.getCondo(line))
         iptu.append(extraction.getIptu(line))
-        lastLine = line
-
-    text = lastLine.find('p', class_='text-2-25 text-neutral-120 font-semibold').text.strip()
-    print(text)
-    text=text.replace(' ','')
-    print(text)
-    text=text.replace('R$','')
-    print(text)
-    text=text.replace('.','')
-    print(text)
-    text=text.replace('Apartirde','')
-    print(text)
-    text=text.replace('apartirde','')
-    print(text)
-    text=text.replace('Valorsobconsulta','-')
-    print(text)
     
     driver.execute_script("arguments[0].click();", nextPageButton)
             
