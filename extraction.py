@@ -2,7 +2,7 @@ from cleasing import get_text_between, clean_price
 
 def getId(line):
     try:
-        href=line.find('li', attrs={"data-cy": "rp-property-cd"})['href']
+        href=line.find('a', class_="block border border-neutral-90 rounded-1 overflow-hidden text-neutral-120 group/card text-start w-full shadow-bottom-0 duration-1 hover:shadow-bottom-6 transition-shadow ease-in")['href']
         start = href.rfind('-')
         end = href.rfind('/')
         id=href[start+1:end]
@@ -13,7 +13,7 @@ def getId(line):
 
 def getUrl(line):
     try:
-        href=line.find('li', attrs={"data-cy": "rp-property-cd"})['href']
+        href=line.find('a', class_="block border border-neutral-90 rounded-1 overflow-hidden text-neutral-120 group/card text-start w-full shadow-bottom-0 duration-1 hover:shadow-bottom-6 transition-shadow ease-in")['href']
         return href
     except:
         return ''

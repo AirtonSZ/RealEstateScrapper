@@ -59,7 +59,7 @@ for page in range(1,pages_number+1):
         lastLine = line
 
     print(lastLine)
-    print(lastLine.find('li', attrs={"data-cy": "rp-property-cd"})['href'])
+    print(lastLine.find('a', class_="block border border-neutral-90 rounded-1 overflow-hidden text-neutral-120 group/card text-start w-full shadow-bottom-0 duration-1 hover:shadow-bottom-6 transition-shadow ease-in")['href'])
     print(lastLine.find('p', class_='text-2-25 text-neutral-120 font-semibold').text.strip())
     print(lastLine.find('p', class_='text-1-75 text-neutral-110 overflow-hidden text-ellipsis').text.strip())
 
