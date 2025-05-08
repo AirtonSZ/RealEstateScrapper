@@ -30,10 +30,10 @@ def scroll_until_element_appears(driver,timeout=30):
         try:
             element = driver.find_element(By.CSS_SELECTOR, 'button[data-testid="next-page"]')
             driver.execute_script("arguments[0].scrollIntoView();", element)
-            time.sleep(random.uniform(22, 25))
+            time.sleep(random.uniform(8, 10))
             return element
         except NoSuchElementException:
-            scroll_offset = int(random.uniform(500, 1000))
+            scroll_offset = int(random.uniform(1500, 2500))
             driver.execute_script(f"window.scrollBy(0, {scroll_offset});")  # scroll down
             time.sleep(random.uniform(3, 6))
             if time.time() - start_time > timeout:
@@ -107,7 +107,7 @@ condo=[]
 iptu=[]
 
 # Get the number of pages to extract information
-pages_number = 2
+pages_number = 3
 tic = time.time()
 
 # Configure msedgedriver
