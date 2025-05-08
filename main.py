@@ -1,5 +1,6 @@
 import time, os, random
 import tempfile
+import shutil
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -145,7 +146,7 @@ for page in range(1,pages_number+1):
     next_page_button = scroll_until_element_appears(driver)
     
     data = driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
-    soup_complete_source = BeautifulSoup(data.encode('utf-8'))
+    soup_complete_source = BeautifulSoup(data.encode('utf-8'), 'html.parser')
     
     soup = soup_complete_source.find(class_='listings-wrapper flex flex-col gap-3')    
     
