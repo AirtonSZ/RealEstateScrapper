@@ -1,6 +1,6 @@
 from cleasing import get_text_between, clean_price
 
-def extractId(line, ids):
+def getId(line, ids):
     try:
         href=line.find('a', class_="block border border-neutral-90 rounded-1 overflow-hidden text-neutral-120 group/card text-start shadow-bottom-0 duration-1 hover:shadow-bottom-6 transition-shadow ease-in")['href']
         start = href.rfind('-')
@@ -11,7 +11,7 @@ def extractId(line, ids):
         ids.append('')
 
 
-def extractUrl(line, url):
+def getUrl(line, url):
     try:
         href=line.find('a', class_="block border border-neutral-90 rounded-1 overflow-hidden text-neutral-120 group/card text-start shadow-bottom-0 duration-1 hover:shadow-bottom-6 transition-shadow ease-in")['href']
         url.append(href)
