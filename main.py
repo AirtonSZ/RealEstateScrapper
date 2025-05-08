@@ -5,10 +5,21 @@ import handleFile
 import navegation
 
 # Initialize lists
-ids = url = propertyType = address = neighbor = area = room = bath = park = price = condo = iptu = []
+ids = []
+url = []
+propertyType = []
+address = []
+neighbor = []
+area = []
+room = []
+bath = []
+park = []
+price = []
+condo = []
+iptu = []
 
 # Get the number of pages to extract information
-pages_number = 3
+pages_number = 1
 tic = time.time()
 
 # Initialize driver
