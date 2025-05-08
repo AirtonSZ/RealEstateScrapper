@@ -1,4 +1,5 @@
 import time, os, random
+import tempfile
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -114,6 +115,15 @@ tic = time.time()
 options = Options()
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36")
 options.add_argument("--disable-blink-features=AutomationControlled")
+options.add_argument('--headless')  # Run in headless mode
+options.add_argument('--disable-gpu')  # Required for headless mode
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+
+# Set a temporary unique user data dir (optional but helps avoid conflicts)
+user_data_dir = tempfile.mkdtemp()
+options.add_argument(f'--user-data-dir={user_data_dir}')
+
 driver = webdriver.Edge(options=options)
 
 # Create a folder to save downloaded HTML pages
@@ -279,6 +289,9 @@ for i in range(0,len(ids)):
     df=pd.DataFrame(combinacao)
     with open(output_file, 'a', encoding='utf-16', newline='') as f:
         df.transpose().to_csv(f, encoding='iso-8859-1', index=False, header=False)
+
+driver.quit()
+shutil.rmtree(user_data_dir)
 
 # Execution time
 toc = time.time()
