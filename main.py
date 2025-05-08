@@ -262,7 +262,7 @@ for page in range(1,pages_number+1):
             iptu.append('')
 
     driver.execute_script("arguments[0].click();", next_page_button)
-    next_page_button.click()
+#   next_page_button.click()
             
 # Close msedgedriver
 driver.quit()
