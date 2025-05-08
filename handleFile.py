@@ -1,4 +1,5 @@
 import os
+import boto3
 import pandas as pd
 
 def createFolder(dirName):
@@ -11,9 +12,9 @@ def createFolder(dirName):
 
 def createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath, park, price, condo, iptu):
 
-    output_file = 'output/VivaReal.csv'
+    outputFile = 'output/VivaReal.csv'
 
-    with open(output_file, 'w', encoding='utf-16', newline='') as f:
+    with open(outputFile, 'w', encoding='utf-16', newline='') as f:
         f.write('Id,Url,Property type,Address,Neighborhood,Area,Rooms,Bathrooms,Parking,Price,Condo,IPTU\n')
 
     # Save as a CSV file
@@ -33,5 +34,18 @@ def createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath,
             iptu[i]
         ]
         df=pd.DataFrame(combinacao)
-        with open(output_file, 'a', encoding='utf-16', newline='') as f:
+        with open(outputFile, 'a', encoding='utf-16', newline='') as f:
             df.transpose().to_csv(f, encoding='iso-8859-1', index=False, header=False)
+
+    return outputFile
+
+
+def uploadToS3(filePath):
+    # Generate timestamped key
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    objectKey = f"viva_real_{timestamp}.csv"
+    bucketName = 'real-estate-scrapper'
+
+    s3 = boto3.client('s3')
+    s3.upload_file(filePath, bucketName, objectKey)
+    print(f"Uploaded {filePath} to s3://{bucketName}/{objectKey}")

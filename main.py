@@ -51,7 +51,8 @@ for page in range(1,pages_number+1):
 navegation.closeDriver(driver, userDataDir)
 
 # Create Output csv 
-handleFile.createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath, park, price, condo, iptu)
+filePath = handleFile.createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath, park, price, condo, iptu)
+handleFile.uploadToS3(filePath)
 
 # Execution time
 toc = time.time()
