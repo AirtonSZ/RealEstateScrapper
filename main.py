@@ -30,12 +30,10 @@ def scroll_until_element_appears(driver,timeout=30):
         try:
             element = driver.find_element(By.CSS_SELECTOR, 'button[data-testid="next-page"]')
             driver.execute_script("arguments[0].scrollIntoView();", element)
-            time.sleep(random.uniform(2, 3))
-            driver.execute_script(f"window.scrollBy(0, {int(random.uniform(-250, -350))});")
             time.sleep(random.uniform(8, 10))
             return element
         except NoSuchElementException:
-            scroll_offset = int(random.uniform(1500, 2500))
+            scroll_offset = int(random.uniform(500, 1000))
             driver.execute_script(f"window.scrollBy(0, {scroll_offset});")  # scroll down
             time.sleep(random.uniform(3, 6))
             if time.time() - start_time > timeout:
@@ -131,9 +129,9 @@ driver = webdriver.Edge(options=options)
 dirName = 'pages'
 try:
     os.mkdir(dirName)
-    print("Directory " , dirName ,  " Created ") 
+    print("Directory", dirName, "Created ") 
 except FileExistsError:
-    print("Directory " , dirName ,  " already exists")
+    print("Directory", dirName, "already exists")
 
 # Get Link to the first page !
 link = 'https://www.vivareal.com.br/venda/sp/sao-paulo/?transacao=venda&onde=,S%C3%A3o%20Paulo,S%C3%A3o%20Paulo,,,,,city,BR%3ESao%20Paulo%3ENULL%3ESao%20Paulo,-21.292246,-50.342843,&pagina=1'
@@ -262,8 +260,6 @@ for page in range(1,pages_number+1):
         except:
             iptu.append('')
 
-    driver.execute_script(f"window.scrollBy(0, {int(random.uniform(-250, -350))});")
-    time.sleep(random.uniform(1, 2))
     next_page_button.click()
             
 # Close msedgedriver
