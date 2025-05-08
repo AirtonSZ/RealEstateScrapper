@@ -34,6 +34,9 @@ def createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath,
             iptu[i]
         ]
         df=pd.DataFrame(combinacao)
+        print(combinacao)
+        print(df.head())
+        print(df.transpose.head())
         with open(outputFile, 'a', encoding='utf-16', newline='') as f:
             df.transpose().to_csv(f, encoding='iso-8859-1', index=False, header=False)
 
