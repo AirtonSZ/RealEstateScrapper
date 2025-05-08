@@ -46,6 +46,6 @@ def clean_price(text):
         The cleaned string.
     """
     text=text.replace(' ','')
-    text=text.replace('R$','').replace('.','')
+    text=text.replace('R$','').replace('\.','')
     text=text.replace('Apartirde','').replace('apartirde','')
     text=text.replace('Valorsobconsulta','-')
