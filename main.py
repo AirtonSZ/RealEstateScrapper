@@ -262,10 +262,13 @@ for page in range(1,pages_number+1):
         except:
             iptu.append('')
 
+    driver.execute_script(f"window.scrollBy(0, {int(random.uniform(-250, -350))});")
+    time.sleep(random.uniform(1, 2))
     next_page_button.click()
             
 # Close msedgedriver
 driver.quit()
+shutil.rmtree(user_data_dir)
 output_file = 'output/VivaReal.csv'
 
 with open(output_file, 'w', encoding='utf-16', newline='') as f:
@@ -290,9 +293,6 @@ for i in range(0,len(ids)):
     df=pd.DataFrame(combinacao)
     with open(output_file, 'a', encoding='utf-16', newline='') as f:
         df.transpose().to_csv(f, encoding='iso-8859-1', index=False, header=False)
-
-driver.quit()
-shutil.rmtree(user_data_dir)
 
 # Execution time
 toc = time.time()
