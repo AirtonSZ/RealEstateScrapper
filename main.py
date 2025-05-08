@@ -116,10 +116,10 @@ tic = time.time()
 options = Options()
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36")
 options.add_argument("--disable-blink-features=AutomationControlled")
-options.add_argument('--headless')  # Run in headless mode
-options.add_argument('--disable-gpu')  # Required for headless mode
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
+# options.add_argument('--headless')  # Run in headless mode
+# options.add_argument('--disable-gpu')  # Required for headless mode
+# options.add_argument('--no-sandbox')
+# options.add_argument('--disable-dev-shm-usage')
 
 # Set a temporary unique user data dir (optional but helps avoid conflicts)
 user_data_dir = tempfile.mkdtemp()
@@ -155,7 +155,7 @@ for page in range(1,pages_number+1):
         outf.write(str(soup_complete_source))
 
     # Web-Scraping
-    for line in soup.findAll('li', attrs={"data-cy": "rp-property-cd"}):
+    for line in soup.find_all('li', attrs={"data-cy": "rp-property-cd"}):
         try:
             # Get Apto's Id    
             href=line.find('a', class_="block border border-neutral-90 rounded-1 overflow-hidden text-neutral-120 group/card text-start shadow-bottom-0 duration-1 hover:shadow-bottom-6 transition-shadow ease-in")['href']
