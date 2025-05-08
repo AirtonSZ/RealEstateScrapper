@@ -261,6 +261,7 @@ for page in range(1,pages_number+1):
         except:
             iptu.append('')
 
+    next_page_button = scroll_until_element_appears(driver)
     next_page_button.click()
             
 # Close msedgedriver
