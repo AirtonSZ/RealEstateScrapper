@@ -19,7 +19,7 @@ condo = []
 iptu = []
 
 # Get the number of pages to extract information
-pages_number = 1
+pages_number = 100
 tic = time.time()
 
 # Initialize driver
@@ -31,7 +31,7 @@ handleFile.createFolder('pages')
 handleFile.createFolder('output')
 
 # Get Link to the first page !
-link = 'https://www.vivareal.com.br/venda/sp/sao-paulo/?transacao=venda&onde=,S%C3%A3o%20Paulo,S%C3%A3o%20Paulo,,,,,city,BR%3ESao%20Paulo%3ENULL%3ESao%20Paulo,-21.292246,-50.342843,&pagina=1'
+link = 'https://www.vivareal.com.br/venda/sp/sao-paulo/zona-oeste/?transacao=venda&onde=,S%C3%A3o%20Paulo,S%C3%A3o%20Paulo,Zona%20Oeste,,,,zone,BR%3ESao%20Paulo%3ENULL%3ESao%20Paulo%3EZona%20Oeste,-23.555771,-46.639557,&pagina=1&precoMaximo=1000000'
 driver.get(link)
 
 # Loop through the website's pages
