@@ -42,8 +42,10 @@ def createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath,
 
 def uploadToS3(filePath):
     # Generate timestamped key
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    objectKey = f"viva_real_{timestamp}.csv"
+    now  = datetime.datetime.now()
+    date = now.strftime("%Y-%m-%d")
+    time = now.strftime("%H-%M-%S")
+    objectKey = f"raw/date={date}/viva_real_{time}.csv"
     bucketName = 'real-estate-scrapper'
 
     s3 = boto3.client('s3')
