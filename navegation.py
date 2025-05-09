@@ -61,7 +61,7 @@ def getAndDownloadPage(driver, page):
     soup = soup_complete_source.find(class_='listings-wrapper flex flex-col gap-3')    
     
     # download page html
-    with open('pages//site'+str(page)+'.html', 'w', encoding='utf-16') as outf:
+    with open('pages//site'+str(page)+'.html', 'w', encoding='utf-8') as outf:
         outf.write(str(soup))
     
     return soup

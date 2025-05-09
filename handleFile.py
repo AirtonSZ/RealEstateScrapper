@@ -14,7 +14,7 @@ def createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath,
 
     outputFile = 'output/VivaReal.csv'
 
-    with open(outputFile, 'w', encoding='utf-16', newline='') as f:
+    with open(outputFile, 'w', encoding='utf-8', newline='') as f:
         f.write('Id,Url,Property type,Address,Neighborhood,Area,Rooms,Bathrooms,Parking,Price,Condo,IPTU\n')
 
     # Save as a CSV file
@@ -34,7 +34,7 @@ def createOutputCsv(ids, url, propertyType, address, neighbor, area, room, bath,
             iptu[i]
         ]
         df=pd.DataFrame(combinacao)
-        with open(outputFile, 'a', encoding='utf-16', newline='') as f:
+        with open(outputFile, 'a', encoding='utf-8', newline='') as f:
             df.transpose().to_csv(f, encoding='iso-8859-1', index=False, header=False)
 
     return outputFile
